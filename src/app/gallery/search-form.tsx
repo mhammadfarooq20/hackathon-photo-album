@@ -7,31 +7,40 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
-export default function SearchForm({ initialSearch }: { initialSearch: string }) {
+export default function SearchForm({
+  initialSearch,
+}: {
+  initialSearch: string;
+}) {
   const [tagName, setTagName] = useState(initialSearch ?? "");
   const router = useRouter();
 
   useEffect(() => {
     setTagName(initialSearch);
   }, [initialSearch]);
-  
+
   return (
-    <form onSubmit={(e) =>{
+    <form
+      onSubmit={(e) => {
         e.preventDefault();
-        router.replace(`/gallery?search=${encodeURIComponent(tagName)}`)
+        router.replace(`/gallery?search=${encodeURIComponent(tagName)}`);
         router.refresh();
-    }}>
+      }}
+    >
       <Label htmlFor="tag-name" className="text-right">
         Search By Tag
       </Label>
       <div className="flex gap-2">
-      <Input
-        onChange={(e) => setTagName(e.currentTarget.value)}
-        id="alnum-name"
-        value={tagName}
-      />
-      <Button type="submit"> <FiSearch/> Search</Button>
-      </div>    
+        <Input
+          onChange={(e) => setTagName(e.currentTarget.value)}
+          id="alnum-name"
+          value={tagName}
+        />
+        <Button type="submit">
+          {" "}
+          <FiSearch /> Search
+        </Button>
+      </div>
     </form>
   );
 }
