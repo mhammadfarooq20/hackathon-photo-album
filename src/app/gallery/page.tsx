@@ -18,7 +18,7 @@ export default async function GalleryPage({
     .expression(`resource_type:image ${search ? ` AND tags=${search}` : ""}`)
     .sort_by("created_at", "desc")
     .with_field("tags")
-    .max_results(50)
+    .max_results(100)
     .execute()) as { resources: SearchResult[] };
 
   return (

@@ -12,8 +12,8 @@ const UploadButton = () => {
       <CldUploadButton
         className=""
         onUpload={(result) => {
-          // return setImageId(result.info.public_id);
           let res = result as UploadResult
+          // return setImageId(result.info.public_id);
           setTimeout(() => {
             console.log("refresh");
             router.refresh();
