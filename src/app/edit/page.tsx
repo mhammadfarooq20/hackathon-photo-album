@@ -84,32 +84,32 @@ export default function EditPage({
 
           {transformation === "blur" && (
             <CldImage
-              src={publicId}
-              width="1200"
-              height="1400"
-              blur="800"
-              alt="some image"
-            />
+            src={publicId}
+            width="1200"
+            height="1400"
+            style={{ filter: 'blur(8px)' }}
+            alt="some image"
+          />
           )}
 
           {transformation === "grayscale" && (
             <CldImage
-              src={publicId}
-              width="1200"
-              height="1400"
-              grayscale
-              alt="some image"
-            />
+            src={publicId}
+            width="1200"
+            height="1400"
+            style={{ filter: 'grayscale(100%)' }}
+            alt="some image"
+          />
           )}
 
           {transformation === "pixelate" && (
-            <CldImage
-              src={publicId}
-              width="1200"
-              height="1400"
-              pixelate
-              alt="some image"
-            />
+             <CldImage
+             src={publicId}
+             width="1200"
+             height="1400"
+             style={{ filter: 'pixelate(100%)' }}
+             alt="some image"
+           />
           )}
 
           {transformation === "bg-remove" && (

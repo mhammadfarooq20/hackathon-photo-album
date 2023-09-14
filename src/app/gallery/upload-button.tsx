@@ -1,8 +1,23 @@
 "use client";
-import { CldUploadButton } from "next-cloudinary";
-import { UploadResult } from "../page";
+
+import { CldUploadButton, CldUploadWidgetResults } from "next-cloudinary";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+
+export interface UploadResult {
+  info: {
+    public_id: string;
+    // You can add more properties related to the uploaded file's information here
+    // For example: format: string;
+    //              width: number;
+    //              height: number;
+    //              ...
+  };
+  // You can add more properties related to the upload result here
+  // For example: success: boolean;
+  //              message: string;
+  //              ...
+}
 
 const UploadButton = () => {
   const router = useRouter();
@@ -10,14 +25,10 @@ const UploadButton = () => {
   return (
     <Button asChild>
       <CldUploadButton
-        className=""
-        onUpload={(result) => {
-          let res = result as UploadResult
-          // return setImageId(result.info.public_id);
+        onUpload={(result: CldUploadWidgetResults) => {
           setTimeout(() => {
-            console.log("refresh");
             router.refresh();
-          }, 1000);
+          }, 2000);
         }}
         uploadPreset="saloeek2"
       >
